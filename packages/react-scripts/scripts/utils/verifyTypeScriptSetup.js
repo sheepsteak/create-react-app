@@ -156,7 +156,6 @@ function verifyTypeScriptSetup() {
           : 'react',
       reason: 'to support the new JSX transform in React 17',
     },
-    paths: { value: undefined, reason: 'aliased imports are not supported' },
   };
 
   const formatDiagnosticHost = {
@@ -221,7 +220,9 @@ function verifyTypeScriptSetup() {
   } else {
     // This is bug fix code of https://github.com/facebook/create-react-app/issues/9868
     // Bellow code release variable from non-extensible and freeze status.
-    appTsConfig.compilerOptions = JSON.parse(JSON.stringify(appTsConfig.compilerOptions));
+    appTsConfig.compilerOptions = JSON.parse(
+      JSON.stringify(appTsConfig.compilerOptions)
+    );
 
     // Original appTsConfig.compilerOptions status
     // Object.isExtensible(appTsConfig.compilerOptions) output: false
